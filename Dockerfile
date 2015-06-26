@@ -18,7 +18,7 @@ RUN usermod -u 99 nobody
 RUN usermod -g 100 nobody
 
 ADD sources.list /etc/apt/
-RUN add-apt-repository ppa:jon-severinsson/ffmpeg
+RUN add-apt-repository ppa:mc3man/trusty-media -y
 RUN apt-get update -qq
 RUN apt-get install -qy ffmpeg nzbget wget unrar mc unzip p7zip-full
 
