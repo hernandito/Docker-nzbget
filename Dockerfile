@@ -1,9 +1,14 @@
-FROM phusion/baseimage:0.9.11
+FROM phusion/baseimage:0.9.16
 MAINTAINER needo <needo@superhero.org>
 ENV DEBIAN_FRONTEND noninteractive
 
 # Set correct environment variables
 ENV HOME /root
+ENV LC_ALL C.UTF-8
+ENV LANG en_US.UTF-8
+ENV LANGUAGE en_US.UTF-8
+ENV TERM xterm
+
 
 # Use baseimage-docker's init system
 CMD ["/sbin/my_init"]
@@ -15,7 +20,7 @@ RUN usermod -g 100 nobody
 ADD sources.list /etc/apt/
 RUN add-apt-repository ppa:jon-severinsson/ffmpeg
 RUN apt-get update -qq
-RUN apt-get install -qy ffmpeg nzbget wget unrar unzip p7zip
+RUN apt-get install -qy ffmpeg nzbget wget unrar mc unzip p7zip-full
 
 #Path to a directory that only contains the nzbget.conf
 VOLUME /config
